@@ -17,7 +17,7 @@ tar zxvf openssh-${OPENSSH_VERSION}.tar.gz && cd openssh-${OPENSSH_VERSION}
 
 echo "OPENSSH SERVER VERSION ${OPENSSH_VERSION} COMPILING FROM SOURCE..."
 chmod +x configure
-sudo ./configure --with-ssl-dir=/usr/local/openssl/include/openssl/ --with-selinux
+./configure --with-ssl-dir=/usr/include/openssl --with-selinux
 sed -i '129a\#include <systemd/sd-daemon.h>' sshd.c
 sed -i '2095a\        /* Signal systemd that we are ready to accept connections */' sshd.c
 sed -i '2096a\        sd_notify (0, "READY=1");' sshd.c
